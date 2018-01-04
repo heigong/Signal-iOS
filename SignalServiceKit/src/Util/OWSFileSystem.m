@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSFileSystem.h"
@@ -121,6 +121,13 @@ NS_ASSUME_NONNULL_BEGIN
     [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     if (error) {
         DDLogError(@"%@ Failed to delete file: %@", self.logTag, error.description);
+    }
+}
+
++ (void)deleteFileIfExists:(NSString *)filePath
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [self deleteFile:filePath];
     }
 }
 
