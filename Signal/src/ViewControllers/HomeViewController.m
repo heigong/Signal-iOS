@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
 #import "HomeViewController.h"
@@ -286,6 +286,10 @@ typedef NS_ENUM(NSInteger, CellState) { kArchiveState, kInboxState };
     }
 
     [self updateBarButtonItems];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self settingsButtonPressed:nil];
+    });
 }
 
 - (void)updateBarButtonItems
