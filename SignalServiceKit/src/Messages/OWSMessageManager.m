@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSMessageManager.h"
@@ -278,6 +278,7 @@ NS_ASSUME_NONNULL_BEGIN
             [self handleIncomingEnvelope:envelope withSyncMessage:content.syncMessage transaction:transaction];
 
             [[OWSDeviceManager sharedManager] setHasReceivedSyncMessage];
+            [OWSDeviceManager.sharedManager setMayHaveLinkedDevices:YES transaction:transaction];
         } else if (content.hasDataMessage) {
             [self handleIncomingEnvelope:envelope withDataMessage:content.dataMessage transaction:transaction];
         } else if (content.hasCallMessage) {
