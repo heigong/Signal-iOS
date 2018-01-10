@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSRecipientIdentity.h"
@@ -48,6 +48,14 @@ extern const NSUInteger kIdentityKeyLength;
 
 // This method can be called from any thread.
 - (void)processIncomingSyncMessage:(OWSSignalServiceProtosVerified *)verified;
+
+#pragma mark - Debug
+
+#if DEBUG
+- (void)clearIdentityState;
+- (void)archiveIdentityState;
+- (void)restoreIdentityState;
+#endif
 
 @end
 
